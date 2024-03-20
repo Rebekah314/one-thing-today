@@ -3,10 +3,16 @@ package org.launchcode.OneThingTodayApp.models;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Entry {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	private LocalDate date;
@@ -17,9 +23,10 @@ public class Entry {
 	
 	private String tag;
 	
+	@ManyToOne(optional = false)
 	private Member author;
 	
-	private Member accountabilityPartner;
+	//private Member accountabilityPartner;
 
 	public long getId() {
 		return id;
@@ -69,13 +76,13 @@ public class Entry {
 		this.author = author;
 	}
 
-	public Member getAccountabilityPartner() {
-		return accountabilityPartner;
-	}
-
-	public void setAccountabilityPartner(Member accountabilityPartner) {
-		this.accountabilityPartner = accountabilityPartner;
-	}
+//	public Member getAccountabilityPartner() {
+//		return accountabilityPartner;
+//	}
+//
+//	public void setAccountabilityPartner(Member accountabilityPartner) {
+//		this.accountabilityPartner = accountabilityPartner;
+//	}
 	
 	
 	
