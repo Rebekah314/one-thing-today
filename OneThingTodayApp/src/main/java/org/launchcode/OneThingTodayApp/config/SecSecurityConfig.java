@@ -1,5 +1,7 @@
 package org.launchcode.OneThingTodayApp.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 //everything below this line was copied from
 // https://github.com/eugenp/tutorials/blob/master/spring-security-modules/spring-security-web-react/src/main/java/com/baeldung/spring/SecSecurityConfig.java
 
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
@@ -19,6 +22,9 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @EnableWebSecurity
 @Profile("!https")
 public class SecSecurityConfig {
+	
+	@Autowired
+	private UserDetailsService userDetailService;
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() throws Exception {

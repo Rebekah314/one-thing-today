@@ -15,6 +15,8 @@ import jakarta.persistence.Id;
 @Entity
 public class Member implements UserDetails {
 	
+	private static final long serialVersionUID = 8134757430704779505L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -24,6 +26,8 @@ public class Member implements UserDetails {
 	private String email;
 	
 	private String password;
+	
+	//private List<Role> roles = new ArrayList<>();
 	
 	//private List<Entry> entries = new ArrayList<>();
 	
@@ -64,6 +68,16 @@ public class Member implements UserDetails {
 		this.password = password;
 	}
 	
+//	public List<Role> getRoles() {
+//		return roles;
+//	}
+//
+//	public void setRoles(List<Role> roles) {
+//		this.roles = roles;
+//	}
+	
+	
+	
 //	public List<Entry> getEntries() {
 //	return entries;
 //}
@@ -73,6 +87,7 @@ public class Member implements UserDetails {
 //}
 	
 	//The following methods, along with getPassword() are required with implementing UserDetails
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
