@@ -13,9 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Member implements UserDetails {
-	
-	private static final long serialVersionUID = 8134757430704779505L;
+public class Member {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +25,7 @@ public class Member implements UserDetails {
 	
 	private String password;
 	
-	//private List<Role> roles = new ArrayList<>();
-	
-	//private List<Entry> entries = new ArrayList<>();
-	
-	
+	private Role role;
 
 
 
@@ -59,69 +53,13 @@ public class Member implements UserDetails {
 		this.email = email;
 	}
 
-	@Override
+
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
-//	public List<Role> getRoles() {
-//		return roles;
-//	}
-//
-//	public void setRoles(List<Role> roles) {
-//		this.roles = roles;
-//	}
-	
-	
-	
-//	public List<Entry> getEntries() {
-//	return entries;
-//}
-//
-//public void setEntries(List<Entry> entries) {
-//	this.entries = entries;
-//}
-	
-	//The following methods, along with getPassword() are required with implementing UserDetails
-
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> roles = new ArrayList<>();
-		//using ArrayList because it is modifiable
-		
-		roles.add(new Role("ROLE_STUDENT"));
-		return roles;
-	}
-
-	@Override
-	public String getUsername() {
-		
-		return this.displayName;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return true;
 	}
 
 }
